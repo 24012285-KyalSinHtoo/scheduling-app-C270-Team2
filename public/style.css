@@ -22,27 +22,21 @@ body {
 }
 
 /* NAVBAR */
+/* Make navbar full width and fixed to bottom */
 .navbar {
+  position: fixed;       /* Stick to viewport */
+  bottom: 0;             /* Stick at bottom */
+  left: 0;               /* Start at left edge */
+  width: 100%;           /* Span entire page width */
   display: flex;
+  justify-content: space-around; /* Even spacing for items */
   align-items: center;
-  justify-content: space-between;
 
-  padding: 14px 56px;
-
-  background: linear-gradient(
-    135deg,
-    #d2e7ff,
-    #fddcdc,
-    #def5ff
-  );
-
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.08);
-
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  padding: 14px 0;       /* Adjust vertical padding */
+  background: linear-gradient(135deg, #d2e7ff, #fddcdc, #def5ff);
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 -4px 20px rgba(59, 130, 246, 0.08); /* Shadow on top */
+  z-index: 1000;         /* Make sure it stays on top of other elements */
 }
 
 /* NAVBAR LINKS (REFINED) */
