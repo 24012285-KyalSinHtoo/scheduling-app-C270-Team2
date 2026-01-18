@@ -7,13 +7,14 @@
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
 
 ## Core Features
-- Task creation, editing, and deletion
-- Priority markers (High / Medium / Low) with sorting
-- Alarm / reminder for overdue or incomplete tasks (Not yet)
-- Calendar view for task scheduling (optional extension)
+- Task creation, editing, and deletion (ADDED)
+- Priority markers (High / Medium / Low) with sorting (ADDED)
+- Alarm / reminder for overdue or incomplete tasks
+- Calendar view for task scheduling
 - Daily task view (tasks due today)
 - Task search functionality
 - Task filter function
+- Home screen before everything starts (optional)
 
 ## CI/CD Overview
 - **Tools Used:** GitHub Actions, Jenkins (optional), Docker, Kubernetes / Docker Swarm, GitHub Copilot
