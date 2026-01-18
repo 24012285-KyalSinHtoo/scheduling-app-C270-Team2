@@ -8,7 +8,14 @@
 
 /* BODY */
 body {
-  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+  background: linear-gradient(
+    180deg,
+    #d3f2f4,
+    #eef2ff,
+    #d6edfd,
+    #fcf5e1
+  );
+
   color: #334155;
   min-height: 100vh;
   padding: 20px;
@@ -24,9 +31,9 @@ body {
 
   background: linear-gradient(
     135deg,
-    #f0f7ff,
-    #ffffff,
-    #e0f2fe
+    #d2e7ff,
+    #fddcdc,
+    #def5ff
   );
 
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
@@ -38,29 +45,37 @@ body {
   z-index: 10;
 }
 
-/* Navbar links */
+/* NAVBAR LINKS (REFINED) */
 .nav-item {
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
 
-  color: #475569;
-
-  padding: 6px 14px;
-  border-radius: 999px;
-
-  transition: background 0.2s ease, color 0.2s ease;
+  color: #1e3a8a; /* dark blue text for all buttons */
+  background: linear-gradient(135deg, #dbeafe, #cffafe); /* pastel gradient background */
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 6px 12px rgba(21, 71, 92, 0.15);
 }
 
-.nav-item:hover {
-  background: rgba(59, 130, 246, 0.08);
-  color: #2563eb;
-}
-
-.nav-item.active {
-  background: rgba(59, 130, 246, 0.14);
+.nav-item:hover,
+.nav-item.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(2, 154, 219, 0.35);
+  background: linear-gradient(135deg, #bfdbfe, #bae6fd);
   color: #1d4ed8;
 }
+
+
+/* Active state for the currently selected tab */
+.nav-item.active {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(56, 189, 248, 0.25);
+  background: linear-gradient(135deg, #93c5fd, #a5f3fc);
+  color: #1d4ed8;
+}
+
 
 /* Center Add Button */
 .nav-add {
@@ -100,9 +115,7 @@ body {
   box-shadow: 0 18px 40px rgba(56, 189, 248, 0.45);
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER*/
 header {
   display: flex;
   justify-content: space-between;
@@ -131,9 +144,7 @@ header h1 {
   box-shadow: 0 6px 14px rgba(59, 130, 246, 0.35);
 }
 
-/* =========================
-   TABLE
-========================= */
+/* TABLE*/
 table {
   width: 100%;
   border-collapse: collapse;
@@ -142,6 +153,13 @@ table {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
+
+table,
+.task-form,
+.task-list li {
+  background: rgba(255, 255, 255, 0.95);
+}
+
 
 th, td {
   padding: 14px 18px;
@@ -158,24 +176,21 @@ tr:nth-child(even) {
   background: #f8fafc;
 }
 
-/* =========================
-   PRIORITY COLORS
-========================= */
-.high {
-  background: #fee2e2;
+/* PRIORITY COLORS */
+tr.high {
+  background: #fee2e2 !important;
 }
 
-.medium {
-  background: #fef3c7;
+tr.medium {
+  background: #fef3c7 !important;
 }
 
-.low {
-  background: #dcfce7;
+tr.low {
+  background: #dcfce7 !important;
 }
 
-/* =========================
-   TASK FORM
-========================= */
+
+/*TASK FORM */
 .task-form {
   background: white;
   padding: 24px;
@@ -211,9 +226,7 @@ tr:nth-child(even) {
   box-shadow: 0 8px 18px rgba(59, 130, 246, 0.35);
 }
 
-/* =========================
-   TASK LIST (ALT VIEW)
-========================= */
+/* TASK LIST (ALT VIEW) */
 .task-list {
   list-style: none;
 }
@@ -232,7 +245,7 @@ tr:nth-child(even) {
 .task-list li a {
   margin-left: 12px;
   text-decoration: none;
-  color: #2563eb;
+  color: #638ff0;
   font-weight: 500;
 }
 
