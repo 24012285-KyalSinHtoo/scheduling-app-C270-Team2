@@ -15,6 +15,7 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Task search functionality
 - Task filter function
 - Home screen before everything starts (optional)
+- Nav Bar
 
 ## CI/CD Overview
 - **Tools Used:** GitHub Actions, Jenkins (optional), Docker, Kubernetes / Docker Swarm, GitHub Copilot
