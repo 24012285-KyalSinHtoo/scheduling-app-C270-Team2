@@ -1,28 +1,18 @@
 
 {
-  "name": "scheduling-app",
+  "name": "todo-scheduler",
   "version": "1.0.0",
-  "description": "Scheduling / To-Do List App",
   "main": "app.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "test": "echo \"(No tests configured)\" && exit 0"
+    "start": "node app.js"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "dayjs": "^1.11.13",
-    "ejs": "^3.1.10",
-    "express": "^5.2.1",
-    "express-session": "^1.18.2",
-    "helmet": "^7.1.0",
-    "method-override": "^3.0.0",
-    "morgan": "^1.10.0",
-    "node-cron": "^3.0.3",
-    "uuid": "^9.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.2"
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "ejs": "^3.1.8",
+    "uuid": "^9.0.0"
   }
 }

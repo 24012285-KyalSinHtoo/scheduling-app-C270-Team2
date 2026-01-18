@@ -1,50 +1,39 @@
 
-const fs = require('fs');
-const path = require('path');
-const { v4: uuid } = require('uuid');
-const bcrypt = require('bcryptjs');
+import express from "express";
+import bcrypt from "bcrypt";
+import { users } from "./usersData.js";
 
-const dataDir = path.join(process.cwd(), 'data');
-const usersFile = path.join(dataDir, 'users.json');
+const router = express.Router();
 
-function ensureStore() {
-  if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-  if (!fs.existsSync(usersFile)) fs.writeFileSync(usersFile, JSON.stringify([]));
-}
+router.get("/", (req, res) => res.render("Welcome"));
 
-function load() {
-  ensureStore();
-  return JSON.parse(fs.readFileSync(usersFile, 'utf-8') || '[]');
-}
+router.get("/login", (req, res) => res.render("Login"));
+router.get("/register", (req, res) => res.render("Register"));
 
-function save(data) {
-  ensureStore();
-  fs.writeFileSync(usersFile, JSON.stringify(data, null, 2));
-}
+router.post("/register", async (req, res) => {
+    const { username, password } = req.body;
+    const hashed = await bcrypt.hash(password, 10);
 
-function getAll() {
-  return load();
-}
+    users.push({ username, password: hashed });
+    res.redirect("/login");
+});
 
-function findByUsername(username) {
-  return load().find(u => u.username.toLowerCase() === String(username).toLowerCase());
-}
+router.post("/login", async (req, res) => {
+    const { username, password } = req.body;
 
-async function createUser({ username, password }) {
-  const all = load();
-  if (findByUsername(username)) throw new Error('Username already exists');
-  const passwordHash = await bcrypt.hash(password, 10);
-  const user = { id: uuid(), username, passwordHash, createdAt: new Date().toISOString() };
-  all.push(user);
-  save(all);
-  return user;
-}
+    const user = users.find(u => u.username === username);
+    if (!user) return res.send("User not found!");
 
-async function validateUser({ username, password }) {
-  const user = findByUsername(username);
-  if (!user) return null;
-  const ok = await bcrypt.compare(password, user.passwordHash);
-  return ok ? user : null;
-}
+    const ok = await bcrypt.compare(password, user.password);
+    if (!ok) return res.send("Wrong password!");
 
-module.exports = { getAll, findByUsername, createUser, validateUser };
+    req.session.user = username;
+    res.redirect("/dashboard");
+});
+
+router.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
+});
+
+export default router;
