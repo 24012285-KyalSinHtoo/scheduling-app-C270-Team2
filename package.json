@@ -21,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/24012285-KyalSinHtoo/scheduling-app/issues"
   },
-  "homepage": "https://github.com/24012285-KyalSinHtoo/scheduling-app#readme"
+  "homepage": "https://github.com/24012285-KyalSinHtoo/scheduling-app#readme",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2"
+  }
 }
