@@ -15,7 +15,16 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Task search functionality (ADDED)
 - Task filter function (ADDED)
 - Home screen before everything starts (optional)
-- Nav Bar
+- Nav Bar (ADDED)
+- A making account feature? (optional)
+- Task completion tick animation (optional)
+- Reoccuring tasks markers (optional)
+- Adding comments when adding tasks, being able to view the comments when you click on the task (optional)
+- An extra filer by school,work etc (optional)
+- Task streaks or points system (optional)
+- Progress bar for the day (optional)
+- Account personalisation (Colour Theme etc) or pfp if i add accounts function
+- Dark Mode (optional)
 
 ## CI/CD Overview
 - **Tools Used:** GitHub Actions, Jenkins (optional), Docker, Kubernetes / Docker Swarm, GitHub Copilot
