@@ -62,5 +62,5 @@ Contains EJS templates for rendering pages:
 
 ### `public/` Folder (optional)
 - Place for static files such as CSS, client-side JS, and images
-test k
+
 
