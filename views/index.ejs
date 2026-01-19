@@ -1,4 +1,4 @@
-<!-- Kyal Sin Htoo -->
+<!-- Kyal -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +7,7 @@
   <title>Task Dashboard</title>
   <link rel="stylesheet" href="/style.css">
 
-
- <!-- ADDED: Glassmorphism + Neon UI Enhancements -->
+  <!-- ADDED: Glassmorphism + Neon UI Enhancements -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
 
@@ -89,11 +88,31 @@
       background: rgba(233, 30, 99, 0.15);
     }
 
+    /* Carousel */
+    .task-carousel {
+      margin: 30px 0;
+    }
+
+    .carousel-card {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .carousel-card h2 {
+      font-size: 2em;
+      background: linear-gradient(45deg, #4caf50, #e91e63);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Search & Filters -->
+  <!-- Search & Filters by Kyal -->
   <form action="/" method="GET" class="task-search-form">
     <input type="text" name="search" placeholder="Search tasks..."
       value="<%= typeof search !== 'undefined' ? search : '' %>">
@@ -110,16 +129,26 @@
     <button type="submit">Filter</button>
   </form>
 
-  <!-- Header -->
+  <!-- ADDED: Carousel Section -->
+  <div class="task-carousel">
+    <div class="glass-card carousel-card">
+      <h2>📋 My Tasks Today</h2>
+    </div>
+  </div>
+
+  <!-- Header by Kyal -->
   <header>
     <h1>📋 My Tasks Today</h1>
     <a class="btn" href="/add">+ Add Task</a>
   </header>
 
-  <!-- Main Content -->
-  <main>
-    <% if (tasks.length===0) { %>
-      <p>No tasks yet. Add one!</p>
+  <!-- ADDED: Glass Wrapper -->
+  <div class="glass-card">
+
+    <!-- Main Content by Kyal-->
+    <main>
+      <% if (tasks.length===0) { %>
+        <p>No tasks yet. Add one!</p>
       <% } else { %>
 
         <table>
@@ -137,17 +166,9 @@
             <% tasks.forEach(task=> { %>
               <tr class="<%= task.priority.toLowerCase() %>">
 
-                <td>
-                  <%= task.name %>
-                </td>
-
-                <td>
-                  <%= task.priority %>
-                </td>
-
-                <td>
-                  <%= task.due %>
-                </td>
+                <td><%= task.name %></td>
+                <td><%= task.priority %></td>
+                <td><%= task.due %></td>
 
                 <td>
                   <a class="edit" href="/edit/<%= task.id %>">Edit</a>
@@ -156,30 +177,31 @@
 
                 <td>
                   <div class="custom-checkbox" onclick="handleTaskCheck('<%= task.id %>', <%= task.completed %>)">
-
                     <% if (task.completed) { %>
                       <span class="tick">✓</span>
-                      <% } %>
-
+                    <% } %>
                   </div>
                 </td>
 
               </tr>
-              <% }); %>
+            <% }); %>
           </tbody>
         </table>
 
-        <% } %>
-  </main>
+      <% } %>
+    </main>
 
-  <!-- Bottom Navigation -->
+  </div>
+  <!-- ADDED: End Glass Wrapper -->
+
+  <!-- Bottom Navigation by Kyal -->
   <nav class="navbar">
     <a href="/calendar" class="nav-item">🗓 Calendar</a>
     <a href="/add" class="nav-add">+</a>
     <a href="/" class="nav-item active">📋 Tasks</a>
   </nav>
 
-  <!-- Completion Modal -->
+  <!-- Completion Modal by Kyal-->
   <div id="taskCompletionModal" class="modal-overlay">
     <div class="modal-content">
       <h3>Task Completed! 🎉</h3>
@@ -192,7 +214,7 @@
   </div>
 
   <!-- Script --> <!-- Alicia-->
- <script>
+  <script>
     let activeTaskId = null;
 
     function handleTaskCheck(taskId, isCompleted) {
@@ -217,7 +239,8 @@
   <div id="dueReminderPopup" class="due-notification-box">
     <span id="reminderText"></span>
   </div>
-  <!-- Alicia's pop-up notifiation-->
+
+  <!-- Alicia's pop-up notification -->
   <script>
     function closeReminderAlicia() {
       const popup = document.getElementById('dueReminderPopup');
@@ -227,12 +250,10 @@
       }
     }
 
-    (function() {
-      // 1. Get Today's date and remove the time part for a fair comparison
+    (function () {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
-      // 2. Get tasks from the server
       const tasksFromBackend = [
         <% tasks.forEach(task => { %>
           { 
@@ -243,31 +264,23 @@
         <% }); %>
       ];
 
-      // 3. Filter for tasks that are:
-      //    - Not completed
-      //    - Due date is earlier than today (Overdue)
       const overdueTasks = tasksFromBackend.filter(t => {
         const taskDueDate = new Date(t.due);
         taskDueDate.setHours(0, 0, 0, 0);
-        
         return !t.completed && taskDueDate < today;
       });
 
       if (overdueTasks.length > 0) {
         const popup = document.getElementById('dueReminderPopup');
         const textSpan = document.getElementById('reminderText');
-        
-        // Build the message for overdue tasks
         const taskNames = overdueTasks.map(t => t.name).join(", ");
         textSpan.innerText = "Reminder: " + taskNames + " is incomplete, get it done soon!";
-        
         popup.style.display = 'block';
         popup.style.opacity = '1';
 
-        // Disappears after 45 seconds
         setTimeout(() => {
           if (popup.style.display !== 'none') closeReminderAlicia();
-        }, 45000); 
+        }, 45000);
       }
     })();
   </script>
