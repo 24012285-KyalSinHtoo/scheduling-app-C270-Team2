@@ -1,22 +1,27 @@
-<!-- Kyal -->
+<!-- Task Dashboard Main Page — by Kyal -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- Meta & Page Setup — by Kyal -->
   <meta charset="UTF-8">
   <title>Task Dashboard</title>
+
+  <!-- External Stylesheet — by Kyal -->
   <link rel="stylesheet" href="/style.css">
 
-  <!-- ADDED: Glassmorphism + Neon UI Enhancements -->
+  <!-- Glassmorphism + Neon UI Enhancements — by Kyal -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
 
+    /* Base Page Styling — by Kyal */
     body {
       font-family: 'JetBrains Mono', monospace;
       background: linear-gradient(135deg, #fce4ec, #e8f5e9);
     }
 
-    /* Glass Card Base */
+
+    /* Glass Card Base Styling — by Kyal */
     .glass-card {
       background: rgba(255, 255, 255, 0.45);
       backdrop-filter: blur(14px);
@@ -26,14 +31,14 @@
       transition: all 0.3s ease;
     }
 
-    /* Card Hover Effect */
+    /* Glass Card Hover Effect — by Kyal */
     .glass-card:hover {
       transform: translateY(-6px);
       border-color: #e91e63;
       box-shadow: 0 20px 45px rgba(233, 30, 99, 0.25);
     }
 
-    /* Gradient Solid Buttons */
+    /* Primary Buttons Styling — by Kyal */
     .btn,
     .nav-add {
       background: linear-gradient(45deg, #4caf50, #e91e63);
@@ -52,7 +57,7 @@
       box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
     }
 
-    /* Outline Buttons */
+    /* Action Buttons Styling — by Kyal */
     .edit {
       border: 2px solid #4caf50;
       padding: 6px 12px;
@@ -77,7 +82,8 @@
       color: white;
     }
 
-    /* Navbar Hover Borders */
+
+    /* Bottom Navigation Styling — by Kyal */
     .navbar a {
       border: 2px solid transparent;
       transition: all 0.3s ease;
@@ -88,7 +94,7 @@
       background: rgba(233, 30, 99, 0.15);
     }
 
-    /* Carousel */
+    /* Carousel Section Styling — by Kyal */
     .task-carousel {
       margin: 30px 0;
     }
@@ -112,7 +118,7 @@
 
 <body>
 
-  <!-- Search & Filters by Kyal -->
+  <!-- Search & Filter Form — by Kyal -->
   <form action="/" method="GET" class="task-search-form">
     <input type="text" name="search" placeholder="Search tasks..."
       value="<%= typeof search !== 'undefined' ? search : '' %>">
@@ -129,22 +135,23 @@
     <button type="submit">Filter</button>
   </form>
 
-  <!-- ADDED: Carousel Section -->
+  <!-- Task Carousel Header — by Kyal -->
   <div class="task-carousel">
     <div class="glass-card carousel-card">
       <h2>📋 My Tasks Today</h2>
     </div>
   </div>
 
-  <!-- ADDED: Glass Wrapper -->
+  <!-- Main Task Table Wrapper — by Kyal -->
   <div class="glass-card">
 
-    <!-- Main Content by Kyal-->
+    <!-- Main Content Area — by Kyal -->
     <main>
       <% if (tasks.length===0) { %>
         <p>No tasks yet. Add one!</p>
       <% } else { %>
 
+        <!-- Task Table — by Kyal -->
         <table>
           <thead>
             <tr>
@@ -164,11 +171,13 @@
                 <td><%= task.priority %></td>
                 <td><%= task.due %></td>
 
+                <!-- Edit / Delete Actions — by Kyal -->
                 <td>
                   <a class="edit" href="/edit/<%= task.id %>">Edit</a>
                   <a class="delete" href="/delete/<%= task.id %>">Delete</a>
                 </td>
 
+                <!-- Completion Checkbox — by Kyal -->
                 <td>
                   <div class="custom-checkbox" onclick="handleTaskCheck('<%= task.id %>', <%= task.completed %>)">
                     <% if (task.completed) { %>
@@ -186,16 +195,17 @@
     </main>
 
   </div>
-  <!-- ADDED: End Glass Wrapper -->
 
-  <!-- Bottom Navigation by Kyal -->
+  
+  <!-- Bottom Navigation Bar — by Kyal -->
   <nav class="navbar">
     <a href="/calendar" class="nav-item">🗓 Calendar</a>
     <a href="/add" class="nav-add">+</a>
     <a href="/" class="nav-item active">📋 Tasks</a>
   </nav>
 
-  <!-- Completion Modal by Kyal-->
+
+  <!-- Task Completion Confirmation Modal — by Kyal -->
   <div id="taskCompletionModal" class="modal-overlay">
     <div class="modal-content">
       <h3>Task Completed! 🎉</h3>
