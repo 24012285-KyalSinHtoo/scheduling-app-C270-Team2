@@ -145,47 +145,46 @@
     }
 
     (function() {
-      // 1. Get Today's date in local time (YYYY-MM-DD)
-      const now = new Date();
-      const offset = now.getTimezoneOffset();
-      const localToday = new Date(now.getTime() - (offset * 60 * 1000));
-      
-      // 2. Target date is exactly 2 days from now
-      const targetDate = new Date(localToday);
-      targetDate.setDate(localToday.getDate() + 2);
-      const targetString = targetDate.toISOString().split('T')[0];
+      // 1. Get Today's date and remove the time part for a fair comparison
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
 
-      console.log("Alicia's Debug: Looking for tasks due on " + targetString);
-
-      // 3. Get tasks from the server
+      // 2. Get tasks from the server
       const tasksFromBackend = [
         <% tasks.forEach(task => { %>
-          { name: "<%= task.name %>", due: "<%= task.due %>" },
+          { 
+            name: "<%= task.name %>", 
+            due: "<%= task.due %>", 
+            completed: <%= task.completed ? 'true' : 'false' %> 
+          },
         <% }); %>
       ];
 
-      // 4. Match the strings exactly
-      const tasksDueSoon = tasksFromBackend.filter(t => {
-        const taskDue = String(t.due).trim();
-        console.log("Checking task: " + t.name + " | Due: " + taskDue);
-        return taskDue === targetString;
+      // 3. Filter for tasks that are:
+      //    - Not completed
+      //    - Due date is earlier than today (Overdue)
+      const overdueTasks = tasksFromBackend.filter(t => {
+        const taskDueDate = new Date(t.due);
+        taskDueDate.setHours(0, 0, 0, 0);
+        
+        return !t.completed && taskDueDate < today;
       });
 
-      if (tasksDueSoon.length > 0) {
+      if (overdueTasks.length > 0) {
         const popup = document.getElementById('dueReminderPopup');
         const textSpan = document.getElementById('reminderText');
         
-        const taskNames = tasksDueSoon.map(t => t.name).join(", ");
-        textSpan.innerText = taskNames + " is due in two days, get it done soon!";
+        // Build the message for overdue tasks
+        const taskNames = overdueTasks.map(t => t.name).join(", ");
+        textSpan.innerText = "Reminder: " + taskNames + " is overdue or incomplete, get it done soon!";
         
         popup.style.display = 'block';
         popup.style.opacity = '1';
 
+        // Disappears after 45 seconds
         setTimeout(() => {
           if (popup.style.display !== 'none') closeReminderAlicia();
         }, 45000); 
-      } else {
-        console.log("Alicia's Debug: No matches found for today.");
       }
     })();
   </script>

@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 // Temporary task storage
 let tasks = [
   { id: 1, name: "Buy groceries", priority: "High", due: "2026-01-19" },
-  { id: 2, name: "Finish homework", priority: "Medium", due: "2026-01-22" }
+  { id: 2, name: "Finish homework", priority: "Medium", due: "2026-01-20" }
 ];
 
 // Add task page
