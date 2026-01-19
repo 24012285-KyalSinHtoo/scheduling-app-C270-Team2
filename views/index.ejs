@@ -134,25 +134,58 @@
   <div id="dueReminderPopup" class="due-notification-box">
     <span id="reminderText"></span>
   </div>
-
+   
   <script>
-    // Alicia: Reverted to Test Mode for verification
-    (function() {
+    function closeReminderAlicia() {
       const popup = document.getElementById('dueReminderPopup');
-      const textSpan = document.getElementById('reminderText');
+      if (popup) {
+        popup.style.opacity = '0';
+        setTimeout(() => { popup.style.display = 'none'; }, 500);
+      }
+    }
+
+    (function() {
+      // 1. Get Today's date in local time (YYYY-MM-DD)
+      const now = new Date();
+      const offset = now.getTimezoneOffset();
+      const localToday = new Date(now.getTime() - (offset * 60 * 1000));
       
-      if (popup && textSpan) {
-        // This version shows the box regardless of the date
-        textSpan.innerText = "TEST MODE: Your notification is working!";
+      // 2. Target date is exactly 2 days from now
+      const targetDate = new Date(localToday);
+      targetDate.setDate(localToday.getDate() + 2);
+      const targetString = targetDate.toISOString().split('T')[0];
+
+      console.log("Alicia's Debug: Looking for tasks due on " + targetString);
+
+      // 3. Get tasks from the server
+      const tasksFromBackend = [
+        <% tasks.forEach(task => { %>
+          { name: "<%= task.name %>", due: "<%= task.due %>" },
+        <% }); %>
+      ];
+
+      // 4. Match the strings exactly
+      const tasksDueSoon = tasksFromBackend.filter(t => {
+        const taskDue = String(t.due).trim();
+        console.log("Checking task: " + t.name + " | Due: " + taskDue);
+        return taskDue === targetString;
+      });
+
+      if (tasksDueSoon.length > 0) {
+        const popup = document.getElementById('dueReminderPopup');
+        const textSpan = document.getElementById('reminderText');
+        
+        const taskNames = tasksDueSoon.map(t => t.name).join(", ");
+        textSpan.innerText = taskNames + " is due in two days, get it done soon!";
         
         popup.style.display = 'block';
         popup.style.opacity = '1';
 
-        // Disappears after 45 seconds
         setTimeout(() => {
-          popup.style.opacity = '0';
-          setTimeout(() => { popup.style.display = 'none'; }, 500);
+          if (popup.style.display !== 'none') closeReminderAlicia();
         }, 45000); 
+      } else {
+        console.log("Alicia's Debug: No matches found for today.");
       }
     })();
   </script>
