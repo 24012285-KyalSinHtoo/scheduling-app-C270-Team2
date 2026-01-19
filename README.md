@@ -4,6 +4,8 @@
 - TaskTide
 
 # Task delegation
+Team lead - KYAL
+
 Backend Features KYAL & ALICIA
 Frontend & UI Integration KYAL & ALICIA
 Test Cases & Automation KADEN (using Git Actions)
