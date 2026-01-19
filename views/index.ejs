@@ -176,7 +176,7 @@
         
         // Build the message for overdue tasks
         const taskNames = overdueTasks.map(t => t.name).join(", ");
-        textSpan.innerText = "Reminder: " + taskNames + " is overdue or incomplete, get it done soon!";
+        textSpan.innerText = "Reminder: " + taskNames + " is incomplete, get it done soon!";
         
         popup.style.display = 'block';
         popup.style.opacity = '1';
