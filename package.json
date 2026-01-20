@@ -4,7 +4,7 @@
   "description": "Scheduling / To-Do List App with CI/CD for DevOps",
   "main": "app.js",
   "scripts": {
-    "test": "npx jest Tests/add task.test.js/*.test.js --runInBand",
+    "test": "npx jest Tests/features.test.js --runInBand",
     "dev": "nodemon app.js"
   },
   "repository": {
