@@ -5,9 +5,9 @@ Team lead - KYAL
 Backend Features KYAL & ALICIA
 Frontend Features KYAL & ALICIA
 Test Cases & Automation KADEN (using Git Actions)
-CI/CD (Jenkins Automation) HAAD (using Jenkins)
+CI/CD (Jenkins Automation) KYAL (using Jenkins)
 Containerisation & Orchestration INDRA & KEIFER (using Docker swarm)
-Deployment Automation using Ansible KYAL & ALICIA
+Deployment Automation using Ansible HAAD & ALICIA
 
 
 ## Application Overview
