@@ -4,7 +4,8 @@
   "description": "Scheduling / To-Do List App with CI/CD for DevOps",
   "main": "app.js",
   "scripts": {
-    "test": "npx jest Tests/*.test.js --runInBand"
+    "test": "npx jest Tests/add task.test.js/*.test.js --runInBand",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -20,15 +21,11 @@
   "homepage": "https://github.com/24012285-KyalSinHtoo/scheduling-app#readme",
   "dependencies": {
     "ejs": "^4.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
   },
   "devDependencies": {
     "jest": "^29.0.0",
     "supertest": "^6.0.0"
   }
 }
-
-
-
-
-  
