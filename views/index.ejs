@@ -1,16 +1,124 @@
-<!-- Kyal Sin Htoo -->
+<!-- Task Dashboard Main Page — by Kyal -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- Meta & Page Setup — by Kyal -->
   <meta charset="UTF-8">
   <title>Task Dashboard</title>
+
+  <!-- External Stylesheet — by Kyal -->
   <link rel="stylesheet" href="/style.css">
+
+  <!-- Glassmorphism + Neon UI Enhancements — by Kyal -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+    /* Base Page Styling — by Kyal */
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: linear-gradient(135deg, #fce4ec, #e8f5e9);
+    }
+
+
+    /* Glass Card Base Styling — by Kyal */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    /* Glass Card Hover Effect — by Kyal */
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: #f92068;
+      box-shadow: 0 20px 45px rgba(233, 30, 99, 0.25);
+    }
+
+    /* Primary Buttons Styling — by Kyal */
+    .btn,
+    .nav-add {
+      background: linear-gradient(45deg, #a3f8a6, #f191b1);
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      padding: 12px 22px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover,
+    .nav-add:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(232, 51, 111, 0.4);
+    }
+
+    /* Action Buttons Styling — by Kyal */
+    .edit {
+      border: 2px solid #4caf50;
+      padding: 6px 12px;
+      color: #4caf50;
+      transition: all 0.3s ease;
+    }
+
+    .edit:hover {
+      background: #4caf50;
+      color: white;
+    }
+
+    .delete {
+      border: 2px solid #e53935;
+      padding: 6px 12px;
+      color: #e53935;
+      transition: all 0.3s ease;
+    }
+
+    .delete:hover {
+      background: #e53935;
+      color: white;
+    }
+
+
+    /* Bottom Navigation Styling — by Kyal */
+    .navbar a {
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .navbar a:hover {
+      border-color: #e91e63;
+      background: rgba(233, 30, 99, 0.15);
+    }
+
+    /* Carousel Section Styling — by Kyal */
+    .task-carousel {
+      margin: 30px 0;
+    }
+
+    .carousel-card {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .carousel-card h2 {
+      font-size: 2em;
+      background: linear-gradient(45deg, #4caf50, #e91e63);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Search & Filters -->
+  <!-- Search & Filter Form — by Kyal -->
   <form action="/" method="GET" class="task-search-form">
     <input type="text" name="search" placeholder="Search tasks..."
       value="<%= typeof search !== 'undefined' ? search : '' %>">
@@ -27,18 +135,40 @@
     <button type="submit">Filter</button>
   </form>
 
-  <!-- Header -->
-  <header>
-    <h1>📋 My Tasks Today</h1>
-    <a class="btn" href="/add">+ Add Task</a>
-  </header>
+  <!-- Task Carousel Section with One Image — Glass + Overlay by Kyal-->
+<div class="task-carousel">
+  <div class="glass-card carousel-card" style="position: relative; overflow: hidden;">
+    <!-- Image -->
+    <img src="https://images.unsplash.com/photo-1422205512921-12dac7b3b603?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdhbGxwYXBlciUyMHNwcmluZ3xlbnwwfHwwfHx8MA%3D%3D"
+         alt="Task Image"
+         style="width: 100%; height: 200px; object-fit: cover; display: block;">
+         
+    <!-- Optional Text on Image -->
+    <h2 style="
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2em;
+      background: linear-gradient(45deg, #4caf50, #e91e63);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    ">📋 My Tasks</h2>
+  </div>
+</div>
 
-  <!-- Main Content -->
-  <main>
-    <% if (tasks.length===0) { %>
-      <p>No tasks yet. Add one!</p>
+
+
+  <!-- Main Task Table Wrapper — by Kyal -->
+  <div class="glass-card">
+
+    <!-- Main Content Area — by Kyal -->
+    <main>
+      <% if (tasks.length===0) { %>
+        <p>No tasks yet. Add one!</p>
       <% } else { %>
 
+        <!-- Task Table — by Kyal -->
         <table>
           <thead>
             <tr>
@@ -54,49 +184,45 @@
             <% tasks.forEach(task=> { %>
               <tr class="<%= task.priority.toLowerCase() %>">
 
-                <td>
-                  <%= task.name %>
-                </td>
+                <td><%= task.name %></td>
+                <td><%= task.priority %></td>
+                <td><%= task.due %></td>
 
-                <td>
-                  <%= task.priority %>
-                </td>
-
-                <td>
-                  <%= task.due %>
-                </td>
-
+                <!-- Edit / Delete Actions — by Kyal -->
                 <td>
                   <a class="edit" href="/edit/<%= task.id %>">Edit</a>
                   <a class="delete" href="/delete/<%= task.id %>">Delete</a>
                 </td>
 
+                <!-- Completion Checkbox — by Alicia -->
                 <td>
                   <div class="custom-checkbox" onclick="handleTaskCheck('<%= task.id %>', <%= task.completed %>)">
-
                     <% if (task.completed) { %>
                       <span class="tick">✓</span>
-                      <% } %>
-
+                    <% } %>
                   </div>
                 </td>
 
               </tr>
-              <% }); %>
+            <% }); %>
           </tbody>
         </table>
 
-        <% } %>
-  </main>
+      <% } %>
+    </main>
 
-  <!-- Bottom Navigation -->
+  </div>
+
+  
+  <!-- Bottom Navigation Bar — by Kyal -->
   <nav class="navbar">
     <a href="/calendar" class="nav-item">🗓 Calendar</a>
     <a href="/add" class="nav-add">+</a>
     <a href="/" class="nav-item active">📋 Tasks</a>
   </nav>
 
-  <!-- Completion Modal -->
+
+  <!-- Task Completion Confirmation Modal — by Alicia -->
   <div id="taskCompletionModal" class="modal-overlay">
     <div class="modal-content">
       <h3>Task Completed! 🎉</h3>
@@ -109,7 +235,7 @@
   </div>
 
   <!-- Script --> <!-- Alicia-->
- <script>
+  <script>
     let activeTaskId = null;
 
     function handleTaskCheck(taskId, isCompleted) {
@@ -134,7 +260,8 @@
   <div id="dueReminderPopup" class="due-notification-box">
     <span id="reminderText"></span>
   </div>
-  <!-- Alicia's pop-up notifiation-->
+
+  <!-- Alicia's pop-up notification -->
   <script>
     function closeReminderAlicia() {
       const popup = document.getElementById('dueReminderPopup');
@@ -144,12 +271,10 @@
       }
     }
 
-    (function() {
-      // 1. Get Today's date and remove the time part for a fair comparison
+    (function () {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
-      // 2. Get tasks from the server
       const tasksFromBackend = [
         <% tasks.forEach(task => { %>
           { 
@@ -160,31 +285,23 @@
         <% }); %>
       ];
 
-      // 3. Filter for tasks that are:
-      //    - Not completed
-      //    - Due date is earlier than today (Overdue)
       const overdueTasks = tasksFromBackend.filter(t => {
         const taskDueDate = new Date(t.due);
         taskDueDate.setHours(0, 0, 0, 0);
-        
         return !t.completed && taskDueDate < today;
       });
 
       if (overdueTasks.length > 0) {
         const popup = document.getElementById('dueReminderPopup');
         const textSpan = document.getElementById('reminderText');
-        
-        // Build the message for overdue tasks
         const taskNames = overdueTasks.map(t => t.name).join(", ");
         textSpan.innerText = "Reminder: " + taskNames + " is incomplete, get it done soon!";
-        
         popup.style.display = 'block';
         popup.style.opacity = '1';
 
-        // Disappears after 45 seconds
         setTimeout(() => {
           if (popup.style.display !== 'none') closeReminderAlicia();
-        }, 45000); 
+        }, 45000);
       }
     })();
   </script>
