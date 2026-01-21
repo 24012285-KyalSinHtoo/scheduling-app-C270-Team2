@@ -51,6 +51,15 @@ expect(res.statusCode).toBe(200);
 //Search bar
 
 //Marking tasks complete
+app.post('/complete/:id', (req, res) => {
+  const task = tasks.find(t => t.id == req.params.id);
+
+  if (task) {
+    task.completed = !task.completed;
+  }
+
+  res.redirect('/');
+});
 
 //Invalid input
 
