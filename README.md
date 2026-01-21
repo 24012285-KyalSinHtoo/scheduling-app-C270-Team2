@@ -3,7 +3,7 @@
 # Task delegation
 Team lead - KYAL
 Backend and Frontend Features KYAL & ALICIA
-Test Cases & Automation KADEN (using Git Actions)
+Test Cases & Automation KADEN (using Git Actions) and KYAL assisted in a few
 CI/CD Pipeline KYAL (using Git Actions)
 Containerisation & Orchestration INDRA & KIEFER (using Docker swarm)
 Deployment Automation using Ansible HAAD & ALICIA
