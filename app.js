@@ -50,9 +50,16 @@ app.post('/edit/:id', (req, res) => {
 
 // Delete task
 app.get('/delete/:id', (req, res) => {
-  tasks = tasks.filter(t => t.id != req.params.id);
+  const id = Number(req.params.id);
+  const index = tasks.findIndex(t => t.id === id);
+
+  if (index !== -1) {
+    tasks.splice(index, 1);
+  }
+
   res.redirect('/');
 });
+
 
 // Task list page
 app.get('/tasks', (req, res) => {
