@@ -169,7 +169,7 @@
 
           <tbody>
             <% tasks.forEach(task => { %>
-              <tr class="<%= task.priority.toLowerCase() %>">
+              <tr class="<%= (task.priority || '').toLowerCase() %>">
                 <td><%= task.name %></td>
                 <td><%= task.priority %></td>
                 <td><%= task.due %></td>
