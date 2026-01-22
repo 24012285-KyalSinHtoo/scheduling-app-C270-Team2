@@ -1,7 +1,4 @@
-// features.test.js
 //Kaden
-//Test cases for Scheduling / To-Do List App
-//Tools: Jest + Supertest
 
 const request = require("supertest");
 
