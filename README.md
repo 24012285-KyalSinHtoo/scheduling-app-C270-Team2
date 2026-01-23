@@ -51,3 +51,4 @@ Contains EJS templates for rendering pages:
 
 ### NOTE : PUT NAME FOR PARTS WE DID EACH and aldo write task delegation here
 
+CI check binding test
