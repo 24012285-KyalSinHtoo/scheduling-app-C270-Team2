@@ -1,3 +1,5 @@
+#dependabot.yml tells GitHub to automatically check your project’s dependencies and open pull requests when they need updates.
+#Kyal
 version: 2
 updates:
   - package-ecosystem: "npm"

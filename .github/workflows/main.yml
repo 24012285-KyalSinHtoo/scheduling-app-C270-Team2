@@ -1,5 +1,5 @@
 # Kaden writing test cases
-# CI/CD pipeline by Kyal 
+# CI/CD pipeline by Kyal
 
 name: CI – Test Scheduling App
 
@@ -36,9 +36,5 @@ jobs:
       - name: Run automated tests
         run: npm test
 
-      - name: Build-ready confirmation
-        run: echo "Tests passed. Code is safe for Docker image build by Indra/Keifer."
-
-      
-        
-
+      - name: CI confirmation
+        run: echo "Tests passed. Safe to merge into main."
