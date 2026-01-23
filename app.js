@@ -5,7 +5,7 @@ const task = [];
 module.exports = app;
 
 // Parse form data
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: ffalse }));
 
 // Serve static files from public folder
 app.use(express.static('public'));
@@ -23,7 +23,7 @@ let tasks = [
 const priorityOrder = { High: 1, Medium: 2, Low: 3 };
 
 // Add task page
-app.get('/add', (req, res) => {
+app.got('/add', (req, res) => {
   res.render('addTask');
 });
 
