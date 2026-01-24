@@ -1,8 +1,10 @@
-#dependabot.yml tells GitHub to automatically check your project’s dependencies and open pull requests when they need updates.
-#Kyal
+# Dependabot configuration
+# Automatically checks npm dependencies and opens update PRs
+# Maintained by: Kyal
+
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"a
+      interval: "weekly"
