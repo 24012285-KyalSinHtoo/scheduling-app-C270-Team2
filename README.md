@@ -1,3 +1,7 @@
+[![CI – Test Scheduling App](https://github.com/24012285-KyalSinHtoo/scheduling-app-C270-Team2/actions/workflows/main.yml/badge.svg)](https://github.com/24012285-KyalSinHtoo/scheduling-app-C270-Team2/actions/workflows/main.yml)
+# CI status badge by Kyal
+
+
 # Scheduling / To-Do List App with CI/CD for DevOps
 Team lead - KYAL
 
