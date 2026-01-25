@@ -13,7 +13,7 @@ Automated test cases _ KADEN and KYAL assisted in a few tests (using Jest & Supe
 
 CI/CD pipeline automation & enforcement _ KYAL (using GitHub Actions)
 
-Containerisation & Orchestration _ INDRA & KIEFER (using Dpcker & Docker swarm)
+Containerisation & Orchestration _ INDRA & KIEFER (using Docker & Docker swarm)
 
 Deployment Automation _ HAAD & ALICIA (using Ansible)
 
