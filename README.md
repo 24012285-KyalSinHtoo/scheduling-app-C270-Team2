@@ -1,42 +1,36 @@
+[![CI – Test Scheduling App](https://github.com/24012285-KyalSinHtoo/scheduling-app-C270-Team2/actions/workflows/main.yml/badge.svg)](https://github.com/24012285-KyalSinHtoo/scheduling-app-C270-Team2/actions/workflows/main.yml)
+# CI status badge by Kyal (shows the current health of main)
+
+
 # Scheduling / To-Do List App with CI/CD for DevOps
-## App Name Ideas
-- TimeKeeper
-- TaskTide
+Team lead - KYAL
+
+
+# Task delegation
+Backend and Frontend Features _ KYAL & ALICIA
+
+Automated test cases _ KADEN and KYAL assisted in a few tests (using Jest & Supertest - executed via github actions)
+
+CI/CD pipeline automation & enforcement _ KYAL (using GitHub Actions)
+
+Containerisation & Orchestration _ INDRA & KIEFER (using Docker & Docker swarm)
+
+Deployment Automation _ HAAD & ALICIA (using Ansible)
+
+
 
 ## Application Overview
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
 
-## Core Features
+## Features
 - Task creation, editing, and deletion (ADDED) #KYAL
 - Priority markers (High / Medium / Low) with sorting (ADDED) #KYAL
-- Alarm / reminder for overdue or incomplete tasks
 - Calendar view for task scheduling (ADDED) #KYAL
-- Daily task view (tasks due today)
 - Task search functionality (ADDED) #KYAL
 - Task filter function (ADDED) #KYAL
-- Mark completed tasks as completed with a tick
-
-- Nav Bar (ADDED)
-- A making account feature? (optional)
-- Task completion tick animation (optional)
-- Reoccuring tasks markers (optional)
-- Adding comments when adding tasks, being able to view the comments when you click on the task (optional)
-- An extra filer by school,work etc (optional)
-- Task streaks or points system (optional)
-- Progress bar for the day (optional)
-- Account personalisation (Colour Theme etc) or pfp if i add accounts function
-- Dark Mode (optional)
-
-## CI/CD Overview
-- **Tools Used:** GitHub Actions, Jenkins (optional), Docker, Kubernetes / Docker Swarm, GitHub Copilot
-- **Pipeline Flow:**
-  1. Developer pushes code to GitHub
-  2. CI pipeline is triggered
-  3. Dependencies are installed
-  4. Automated tests are executed
-  5. Build is created only if all tests pass
-  6. Docker image is generated
-  7. Application is deployed using orchestration
+- Nav Bar (ADDED) #KYAL
+- Alarm / reminder for overdue or incomplete tasks #Alicia
+- Mark completed tasks as completed with a tick (ADDED) #Alicia
 
 ## AI-Augmented Tool Usage
 - GitHub Copilot assists with:
@@ -45,16 +39,10 @@ This is a scheduling application designed to help users manage tasks efficiently
   - Reducing syntax and logic errors
 - Accelerates development and supports continuous integration
 
-## Strategy
-- Features divided based on expertise
-- All code changes must pass CI checks before merging
-- Regular pull request reviews ensure code quality
-- Encourages collaboration, accountability, and reduces merge conflicts
-
 ## Project Files
 ### `views/` Folder
 Contains EJS templates for rendering pages:
-
+- **`calendarView.ejs`** – Calenderview, press on a date to see that days task
 - **`index.ejs`** – Main dashboard showing task list with edit/delete links
 - **`addTask.ejs`** – Form to add a new task
 - **`editTask.ejs`** – Form to edit an existing task
@@ -66,3 +54,4 @@ Contains EJS templates for rendering pages:
 
 
 ### NOTE : PUT NAME FOR PARTS WE DID EACH and aldo write task delegation here
+

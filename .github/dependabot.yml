@@ -1,0 +1,10 @@
+# Dependabot configuration
+# Automatically checks npm dependencies and opens update PRs
+# Maintained by: Kyal
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
