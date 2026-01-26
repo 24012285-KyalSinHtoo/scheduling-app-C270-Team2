@@ -1,4 +1,4 @@
-# Contributing Guidelines
+# Contributing Guidelines by Kyal
 
 Maintained by: Kyal (CI/CD & Repository Process)
 
