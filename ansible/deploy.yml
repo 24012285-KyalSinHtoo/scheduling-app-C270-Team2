@@ -1,0 +1,20 @@
+- name: Deploy Scheduling App
+  hosts: app_servers
+  become: true
+
+  tasks:
+    - name: Pull latest code from GitHub
+      git:
+        repo: 'https://github.com/Team2/scheduling-app-C270.git'
+        dest: /var/www/scheduling-app
+        version: main
+
+    - name: Install dependencies
+      npm:
+        path: /var/www/scheduling-app
+        production: true
+
+    - name: Restart app service
+      systemd:
+        name: scheduling-app
+        state: restarted
