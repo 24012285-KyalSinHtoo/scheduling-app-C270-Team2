@@ -1,6 +1,6 @@
 - name: Deploy Scheduling App
   hosts: app_servers
-
+  become: true
 
   tasks:
     - name: Pull latest code from GitHub
