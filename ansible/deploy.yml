@@ -5,7 +5,7 @@
   tasks:
     - name: Pull latest code from GitHub
       git:
-        repo: 'https://github.com/alwkcja/scheduling-app-C270.git'
+        repo: 'https://github.com/24012285-KyalSinHtoo/scheduling-app-C270-Team2.git'
 
         dest: /var/www/scheduling-app
         version: main
