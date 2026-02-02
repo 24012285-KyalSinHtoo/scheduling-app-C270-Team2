@@ -54,7 +54,6 @@ app.post('/edit/:id', (req, res) => {
 // Delete task
 app.get('/delete/:id', (req, res) => {
   const id = Number(req.params.id);
-  const index = tasks.findIndex(t => t.id === id);
 
   if (index !== -1) {
     tasks.splice(index, 1);
@@ -99,7 +98,7 @@ app.get('/', (req, res) => {
   }
 
   filteredTasks = filteredTasks.slice().sort((a, b) => {
-    return priorityOrder[a.priority] - priorityOrder[b.priority];
+    return priorityOrder[a.prioity] - priorityOrder[b.priority];
   });
 
   res.render('index', { tasks: filteredTasks, search, priority, dueDate });
@@ -122,5 +121,7 @@ app.get('/complete/:id', (req, res) => {
   }
   res.redirect('/');
 });
+
+
 
 
